@@ -1,7 +1,6 @@
 # from dotenv import load_dotenv
 from dotenv import dotenv_values
 import random
-import os
 from time import sleep
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -13,17 +12,21 @@ class LoginPage:
         self.browser = browser
 
     def login(self, username, password):
+        # find "username" input at log-in page
         username_input = browser.find_element(
             By.XPATH, '/html/body/div[2]/div/div/div[1]/div/div/div/div[1]/section/main/article/div[2]/div[1]/div[2]/form/div/div[1]/div/label/input')
+        # find "password" input at log-in page
         password_input = browser.find_element(
             By.XPATH, '/html/body/div[2]/div/div/div[1]/div/div/div/div[1]/section/main/article/div[2]/div[1]/div[2]/form/div/div[2]/div/label/input')
 
+        # input username
         username_input.send_keys(username)
+        # input password
         password_input.send_keys(password)
 
+        # locate and click on "Log in" button after locating
         login_button = browser.find_element(
-            By.XPATH, "/html/body/div[2]/div/div/div[1]/div/div/div/div[1]/section/main/article/div[2]/div[1]/div[2]/form/div/div[3]")
-        login_button.click()
+            By.XPATH, "/html/body/div[2]/div/div/div[1]/div/div/div/div[1]/section/main/article/div[2]/div[1]/div[2]/form/div/div[3]").click()
         sleep(10)
 
     def search(self, target_user):
@@ -136,8 +139,8 @@ def second_login_page(browser, target_user, message):
 # user and message to DM
 target_user_list = ["yyj0728", "y.uuno"]
 randomNumber = random.randint(0, 11)
-message_list = ["Happy Birthday!", "clown", "PLEASE REPLY!", "BIGFAN!", "HELLO",
-                "i'm tired", "you", "heloo", "hi", "reply me im desperate", "can i be your friend?", "stream twitch!"]
+message_list = ["Happy Birthday!", "clown fire", "PLEASE REPLY!", "testing!", "robot",
+                "i'm tired", "you", "heloo", "hi", "repl", "can i be your friend?", "stream twitch!"]
 message = message_list[randomNumber]
 
 
